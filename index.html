@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>TALI Premium Collection</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="TALI — پوشاک زنانه، قطعه به قطعه انتخاب‌شده">
+<meta name="description" content="TALI — اندک، اما ماندگار. پوشاک زنانه در تعداد محدود.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400&family=Markazi+Text:wght@400;500&family=Vazirmatn:wght@200;300;400&display=swap">
@@ -43,13 +43,16 @@
 html[lang="fa"]{--f-display:"Markazi Text","Vazirmatn",serif;--f-text:"Vazirmatn",Tahoma,sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141A26;--ink:#F5F0E8;--rule:rgba(216,202,187,.2);--muted:rgba(245,240,232,.6);--deep:#0D121B;--sunc:var(--beige);--panel:#1A2131;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#141A26;--ink:#F5F0E8;--rule:rgba(216,202,187,.2);--muted:rgba(245,240,232,.6);--deep:#0D121B;--sunc:var(--beige);--panel:#1A2131;color-scheme:dark}
-body.night{--bg:var(--navy);--ink:var(--ivory);--rule:rgba(216,202,187,.28);--muted:rgba(245,240,232,.62);--sunc:var(--beige)}
+:root{--frame:rgba(32,40,58,.3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--frame:rgba(216,202,187,.34)}}
+:root[data-theme="dark"]{--frame:rgba(216,202,187,.34)}
+html.tt body,html.tt body *{transition:background-color .7s var(--ease),color .7s var(--ease),border-color .7s,outline-color .7s!important}
 html[lang="en"] .display{letter-spacing:-.01em}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-text);font-weight:300;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .9s var(--ease),color .9s var(--ease)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-text);font-weight:300;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 html[lang="fa"] body{font-size:16.5px;line-height:1.85}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--bg)}
 img{max-width:100%;display:block}
@@ -89,9 +92,15 @@ html[dir="rtl"] .cta .line{transform-origin:right}
 .media{position:relative;overflow:hidden;margin:0;background:var(--beige)}
 .media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
 .hov:hover .media img,.media.hov:hover img{transform:scale(1.035)}
+/* frames: arch (from the sun mark), oval, and a hairline mat that draws in after the reveal */
+.f-arch{border-radius:999px 999px 0 0}
+.f-oval{border-radius:50%}
+.f-mat{outline:1px solid transparent;outline-offset:10px;transition:outline-color 1.4s var(--ease)}
+.f-mat.in,html:not(.js) .f-mat{outline-color:var(--frame)}
+.f-arch.f-mat{outline-offset:12px}
 
 /* ---------- nav ---------- */
-.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--rule);transition:transform .7s var(--ease),background-color .9s var(--ease),border-color .9s;padding-left:var(--gut);padding-right:var(--gut-r)}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--rule);transition:transform .7s var(--ease);padding-left:var(--gut);padding-right:var(--gut-r)}
 .nav.hide{transform:translateY(-102%)}
 .nav__in{height:var(--navh);display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
 .menu-btn{justify-self:start;display:flex;align-items:center;gap:12px;background:none;border:0;padding:10px 0;cursor:pointer;font-size:13px;letter-spacing:.04em}
@@ -118,7 +127,7 @@ html[lang="en"] .menu nav a:nth-child(even){font-style:italic}
 .menu nav a span{display:inline-block}
 .menu nav:hover a{opacity:.32}
 .menu nav a:hover{opacity:1}
-.menu__pic{align-self:stretch;justify-self:end;width:min(30vw,440px);overflow:hidden;margin:0}
+.menu__pic{align-self:stretch;justify-self:end;width:min(30vw,440px);overflow:hidden;margin:0;border-radius:999px 999px 0 0}
 .menu__pic img{width:100%;height:100%;object-fit:cover}
 .menu__foot{position:absolute;left:var(--gut);right:var(--gut-r);bottom:calc(24px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;font-size:13px;color:var(--beige)}
 
@@ -135,16 +144,20 @@ html[lang="en"] .menu nav a:nth-child(even){font-style:italic}
 .intro__word i:nth-child(3){left:67.916%;width:20.04%;-webkit-mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAFaCAMAAACub6bUAAACT1BMVEVMaXHr6+bt7eT49vP59vD6+vj////////y7+ry7+rx7urz8Ov///rx7uny7+rx7unx7+rs7NPx7unWqqrz8Ovx7enp4+H18uzt6uN0dGD08ez18+7m49zq5N7l5eX08ezv6uUAAGe/v7/x8Or59/L08u318+3z8Ovw7Oj49fDx7urs7N349fD28+/v7Ojy7+z08Oz28+739vDo7uL18+/49/P08uz///n49fDu7Oj59vH38+/39fHt7ef49/P38+718uz59vD49fH39fDz8Oz49vH29O/x7uf08uzQ0MXr6+b39O/x7+r69/P59/L49vHz8Ovu6ufz8Ov08ez18+3y7Of38+/39e/29O7z7+r08uzx7ur49vL69/L59/L19e36+PL39e/z8ev08O328+74+PT39PL08uvy7un18O759/L4+PT5+PL18+718+/08O349vH28ur6+PP18u729O718e7r4dfz7e328/D18u/m5ub6+PLw7efz8Ov59vD39vDw5+L18e3z7+v18+z7+fP49vDp6en7+fT69vH39fD49fH59/P19O749e/29O7z8uz49fDz8Ov6+PP18+36+vjw7Ozy8Ov4+Pbx6uT19e729fL//fj29vLu7ujx7un29fH5+PXy8Onx7un5+PT6+fj+/fj59vD49vPy5ubz8Ov++/b///z28+3y7+r18u3//vn///r//fj39O////n28+///ff49fD///v9+/X8+vX//Pf69/L8+fT79/P08ez9+vX//vn////5+PT+/fj8+vbQLY+2AAAAqXRSTlMANB3qtXkCA/z7/J8B/P37/QT+A/79F/0eAlv+FBUHmxsBBDn9i+z8KPgxEdTkTE5qq9EOc+fG/sQ9v+bzK3p7k/ni8sjYn01fCxnJjLGWr3klq/hvMJuH2P6m+am0tmb1hblH8H5jdvxt+km54eCRlD7rpr+ZGixXUBXbV/vIjzaDgHHm5Azr1Pv0rMOnvbPN+J7qdzZmeyZP/vs+LZe44b/O3bj8s/QVuK56dwAAAAlwSFlzAAAuIwAALiMBeKU/dgAABQJJREFUeNrt2vd3E0cQB/BJQu5Oyd3JPiuycNzAMsIYdwwhECD0AKG3UNJ7771XUoAkpPeeWOj0TnKQbElGR5I/LHt2Xh5+L0UrrGV++M5v+kmfNztzO7e3tOhA26WS0bazjzRSFT+c+dGXjM/PfEy6MuBPxYOXSMbBzAcKgbOSxohkhE5eDCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAKgZeW2AO3MYdeCjDHPi+Z/EGbs2HeAO3jDIHbs/U8QZ+dIp5k3z6h8Mb+MVnzIFf7jrtsgZGe3K8gfWDEzZrIH0tPc4oBn41avEG7s4zB/YVeTcJ7Xgv7bIGtu4v2pyBGr3tG6yfg/Sy7MClFqjTPb85nIEmxealXM5NQrOvKDucgTpt8UK8gU+VWGfQpJZ5WZdzDZqyxx+qgXPpLrmBRjVQoyeWS439qoFEc64sG5yBc+kOqTVWDtToql0yI5f6JTbpXpkXE/VAnW7PWLwz+PiyX13GQPF3bRL7cejkCtVAjR5KuZGKgfnbVANFSDwKLf9B5UCdmpIVt4kxtlaULSluk9ePVPxy557uWiCqQnUKF1W+m1iZ9eJlS3UKm1dXfg5nF5uo3lSdwhWVp9BJv7WBNF3Xah7mWSmMvlb5YG1f/uZL3Yo7RaeVEh+dnIh/36qmjgtqHB9+cnYVdj8Tr/yUxq3L5cezqdpGo3/9tBT2y4wMI3ZI9uxYOpzk4WmNXP98yRnhFEZy1vQq7J2wOQPF7jDgW7yB8x+WPW5VCgw2PM/iDDTFUZf8LRCFQGqgjhtHXMZA8Y68ktEi/wPQnDP70YLFGBi8xb+RchgDxSS6sWBwBoocbvXCnIEmXbM5aTEGBhvKqzmHMVCUYW+8zmUMFFve7sxznIFilV+Qv9OlEmhqdJRBK/87MGjlY36YMVAscvPmQpgxUAg3DZ5v4X8CxegVW5gMMwaKh03sPOfwf4BC2P5uJswYKITRd7xwhC9Q1OHQNi/k8gWSZjY85iUcvsBgT9leSlt8gWTq9OyaUpgvMJi+9hzxLZcvUDRz806v0eILJE2jV66eCPMFBoXYsdBL2GyBwTIPrZoohl22QNI12rAuH3HYAsmsp+4H7h6/zOYKnOyVpWv9rLonjiww6JXW/mVeo6rdWRo4WYnRzuV+RE0WqwCKJJo0f32Xn1BBrAYoKlF8bV9woMtP155YHfAv4t41XtZK8ASKQVZ8cN/R2eOPJyybJTDIorgZecPi+GjOMlyOwCmivrStZyyTNSyHIXCqo6nlyYEThSU5uxaJPFeguHkYFCNtanrk/rg3lgqQLi/gZBoDY/MtNy2+tbwkmY3caRm2ywk4WY2BUYv1dd68uut3r1DKurZhWXWGbV/nnkuEyodn7FqLHtQjaU+/uHHf8cETqfIpL58pl+I58WE/XXVEpl0JmIFE6lP3QFrb9/T279s78O13+7//Znj4oqpj+OdDM35BSCgb/v7ROtQSbW+/sPqI/fIn7SmXkhiSw8cAAAAASUVORK5CYII=);mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAFaCAMAAACub6bUAAACT1BMVEVMaXHr6+bt7eT49vP59vD6+vj////////y7+ry7+rx7urz8Ov///rx7uny7+rx7unx7+rs7NPx7unWqqrz8Ovx7enp4+H18uzt6uN0dGD08ez18+7m49zq5N7l5eX08ezv6uUAAGe/v7/x8Or59/L08u318+3z8Ovw7Oj49fDx7urs7N349fD28+/v7Ojy7+z08Oz28+739vDo7uL18+/49/P08uz///n49fDu7Oj59vH38+/39fHt7ef49/P38+718uz59vD49fH39fDz8Oz49vH29O/x7uf08uzQ0MXr6+b39O/x7+r69/P59/L49vHz8Ovu6ufz8Ov08ez18+3y7Of38+/39e/29O7z7+r08uzx7ur49vL69/L59/L19e36+PL39e/z8ev08O328+74+PT39PL08uvy7un18O759/L4+PT5+PL18+718+/08O349vH28ur6+PP18u729O718e7r4dfz7e328/D18u/m5ub6+PLw7efz8Ov59vD39vDw5+L18e3z7+v18+z7+fP49vDp6en7+fT69vH39fD49fH59/P19O749e/29O7z8uz49fDz8Ov6+PP18+36+vjw7Ozy8Ov4+Pbx6uT19e729fL//fj29vLu7ujx7un29fH5+PXy8Onx7un5+PT6+fj+/fj59vD49vPy5ubz8Ov++/b///z28+3y7+r18u3//vn///r//fj39O////n28+///ff49fD///v9+/X8+vX//Pf69/L8+fT79/P08ez9+vX//vn////5+PT+/fj8+vbQLY+2AAAAqXRSTlMANB3qtXkCA/z7/J8B/P37/QT+A/79F/0eAlv+FBUHmxsBBDn9i+z8KPgxEdTkTE5qq9EOc+fG/sQ9v+bzK3p7k/ni8sjYn01fCxnJjLGWr3klq/hvMJuH2P6m+am0tmb1hblH8H5jdvxt+km54eCRlD7rpr+ZGixXUBXbV/vIjzaDgHHm5Azr1Pv0rMOnvbPN+J7qdzZmeyZP/vs+LZe44b/O3bj8s/QVuK56dwAAAAlwSFlzAAAuIwAALiMBeKU/dgAABQJJREFUeNrt2vd3E0cQB/BJQu5Oyd3JPiuycNzAMsIYdwwhECD0AKG3UNJ7771XUoAkpPeeWOj0TnKQbElGR5I/LHt2Xh5+L0UrrGV++M5v+kmfNztzO7e3tOhA26WS0bazjzRSFT+c+dGXjM/PfEy6MuBPxYOXSMbBzAcKgbOSxohkhE5eDCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAKgZeW2AO3MYdeCjDHPi+Z/EGbs2HeAO3jDIHbs/U8QZ+dIp5k3z6h8Mb+MVnzIFf7jrtsgZGe3K8gfWDEzZrIH0tPc4oBn41avEG7s4zB/YVeTcJ7Xgv7bIGtu4v2pyBGr3tG6yfg/Sy7MClFqjTPb85nIEmxealXM5NQrOvKDucgTpt8UK8gU+VWGfQpJZ5WZdzDZqyxx+qgXPpLrmBRjVQoyeWS439qoFEc64sG5yBc+kOqTVWDtToql0yI5f6JTbpXpkXE/VAnW7PWLwz+PiyX13GQPF3bRL7cejkCtVAjR5KuZGKgfnbVANFSDwKLf9B5UCdmpIVt4kxtlaULSluk9ePVPxy557uWiCqQnUKF1W+m1iZ9eJlS3UKm1dXfg5nF5uo3lSdwhWVp9BJv7WBNF3Xah7mWSmMvlb5YG1f/uZL3Yo7RaeVEh+dnIh/36qmjgtqHB9+cnYVdj8Tr/yUxq3L5cezqdpGo3/9tBT2y4wMI3ZI9uxYOpzk4WmNXP98yRnhFEZy1vQq7J2wOQPF7jDgW7yB8x+WPW5VCgw2PM/iDDTFUZf8LRCFQGqgjhtHXMZA8Y68ktEi/wPQnDP70YLFGBi8xb+RchgDxSS6sWBwBoocbvXCnIEmXbM5aTEGBhvKqzmHMVCUYW+8zmUMFFve7sxznIFilV+Qv9OlEmhqdJRBK/87MGjlY36YMVAscvPmQpgxUAg3DZ5v4X8CxegVW5gMMwaKh03sPOfwf4BC2P5uJswYKITRd7xwhC9Q1OHQNi/k8gWSZjY85iUcvsBgT9leSlt8gWTq9OyaUpgvMJi+9hzxLZcvUDRz806v0eILJE2jV66eCPMFBoXYsdBL2GyBwTIPrZoohl22QNI12rAuH3HYAsmsp+4H7h6/zOYKnOyVpWv9rLonjiww6JXW/mVeo6rdWRo4WYnRzuV+RE0WqwCKJJo0f32Xn1BBrAYoKlF8bV9woMtP155YHfAv4t41XtZK8ASKQVZ8cN/R2eOPJyybJTDIorgZecPi+GjOMlyOwCmivrStZyyTNSyHIXCqo6nlyYEThSU5uxaJPFeguHkYFCNtanrk/rg3lgqQLi/gZBoDY/MtNy2+tbwkmY3caRm2ywk4WY2BUYv1dd68uut3r1DKurZhWXWGbV/nnkuEyodn7FqLHtQjaU+/uHHf8cETqfIpL58pl+I58WE/XXVEpl0JmIFE6lP3QFrb9/T279s78O13+7//Znj4oqpj+OdDM35BSCgb/v7ROtQSbW+/sPqI/fIn7SmXkhiSw8cAAAAASUVORK5CYII=)}
 .intro__word i:nth-child(4){left:93.153%;width:6.847%;-webkit-mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAF8CAMAAACkDSiYAAADAFBMVEVMaXH////////x7urx7unw7ej////y7+r38+/x8evy7+nx7uny7+ry7+ry7+rx7umNjY308Ov//6/p4+ny7+v18u359/IfAADx7ujo5uP3v7//vYjz8ezy7+vy7+v18+3z8Ovm49739O/w6+Pw6+bIvbfV0dHy7+zz7+vy8Ovz8Ovy8Ov18u318e3z8Ovw7+j6+PPx7+r18+3x6uPx8Or29PD18uzu5+Dy8Ov08Ov69/L49fHv7Of38+718u749vH7+fT29O/x7ujy7+r49/L39O7q5+Dv7efy7+jx7un59/P7+PPw8Onz8e318ez29PDz8Or08ez29O/08Oz28+3y7+vx7un38O7y7ur28u318u329O718u35+PX18u3y7ur6+PPs6OT6+PT08Ovq6uPs5+f18e728/Dx7uj18Ov18+369/Lq6ur38/D7+fb49vHz7+r08uzo5uLs6efx7ur28u3z8Oz18ezy7+r28u328+/v7uj18+7z8Ovy7ef29e/49vLu7unt7ef5+PT18u36+PP08uz08Ovw6+aQ/5D39vD5+PL49vD28u729O7y7+r38+77+/j59vH39e/w7en08Ov28+7x7uns2uP39fDy7+z08ez18+3o/+jz8Ov49PH7+PPy7+ry7+ny7+j08Oz39e/z8ez29fH08ez6+PT49fH49e/l5d7w7+jy7+ry8Or08Ov39vL59vL18u/7+vj39vH49vHx7+z49e/59/T7+fT69/L59/D39e/x7+rv7Ofu7Ob39vP49/T7+/jw7ej49u/7+/bz8Orz7ur6+PXy8Ovy8Ov39e749/Pq6uL49vT4+PH38+339fD28+/18u7z8+3v7ur49PDz8Ov08ez9+fT//fj///r//ff//vn39fDy7un7+PPz7+r39O/++/b8+fX///n9+vX///v69vH//Pf///z79/P28+3///j8+vb////7+vX49fD9+/X59/L59/X9+vT++/X+/Pf///718u369/H//vrz8Oz//fn18uxFhgqHAAAA2HRSTlMAAwH8/VkC/vInqPz8+/37Av4DBPr8/gH9FgQCQ0hdU2sQ/Rs1BwtNPnH9/v1fNDr0/UkHRnxPFfs328Eg0Hrk/t1BZ/38GlIwTMj8CFXT+O+g1mPOkvkm/OjH76XBwvv1KOb9GBKPsnaNtPoMqY6RiE4mI3CB961zUIhd3IsvmvQeK6zis9rsMwGcqOa4roH5kOHNe72+fQ77m/nuBfvg6PP9hdqlqFzz9uDaE3f54WihuSj0vpJh5u74743R0/uH/uyU/nKbV6uj9rvP4D+WScDpyNMrW7URm1t7AAAACXBIWXMAAC4jAAAuIwF4pT92AAAHgElEQVR42u3cZ1wUZx4H8P8Mk3mSTNl1VyRI78WCYouAioogih0N1oti1NhboihG1ETTY0xvpph+6eV6cs1rud4+N8uMA3tbWHbdAxZcOUju8iwLyyJtd/ImL57/q+cz+3yf55lnnpkPvPkBXFMsTFm+pjz/BNA9V2i4pfrNpabj+KfhioIjzTs8zXNxI3DlA1dlpWNm75VBi4XpS5j3Gk4Fz3yqXUBLpocwM0BauZl3P5/So2mIXm3hamekhUDx4o7ZBcY5rmeVFCR4GUHdAoZBSVQQnlOHBPW3Pauk4FmHIJrjhrpllg7cYtmrZt6yunvdNDxd3ck33n1bYBMCPQN1W1lgZAr2KBzfFO+/wEKsBXHqa4HtYiGtrA+l4Ynt0UDR3TiurUKQ1/nxaDiCh3K+0T02TUHxk1uCN56F+TVKXi6wrH+kd/I8vOWP0b6F0pC2wMZ3/OKAvz9LQem55heTeh8kHj3Lvqpo4cqd/skpWKZyTEOCbzI87hKJsz7ptxSUHSus+6ltavDu6Rc0cSKvPJYKFOvrssgrcvZlvh4U/ErleHmKr00bYWO+ki3q7A8ErZuGI011nCR4a96lcC8aild7+MbZ03CLhd87eWlsKm7gXY5faxUkztI6JWjZuFlyzskhJtL+0AE8eQy8rkbwtlLfOvavdfO2P6QDOxqeftY6j5F0zgdLgO57rFK228cyiJNfOgrsJHjDynDqcaAoGGeN4JSV8AI+858p55GYrTxRcO0pN9wHWRNsOolLblg2DeDE39x8Y3USHvQ1mWPMf8F7mtj1s2fhHcb+Z43VQ+pjSiWD9y1vMsBWK1fRFgew+W0Lb3k7GooPqZHMGEE9F9f9QPsWfvw7V5otOklo23EMVigVgrIHoPQyI8i7IDZPxltSad+eAkZ64OPNwr5ZagXu5PprxhkL33l6J+xWhIntRw+aG/GS23Y8Pnrw1wNPfuJhdWyFpLO+tNSNUONkeNUs/v+Lxa0jRCT8p3pO1zEY4mWOOujbGGZsB5IE197pHglJpk5eYiLVQ5uH+xDFGCC1XMmuQEiSxNb1e9UICTeQ7vKtWSzoh/uQ4KWn315YxGGDpDtf/gr5GoJ9eQ5QMf1766nuMhgMrK+MRiiZ5cgeI0n4tk3YXpwnr3sHjDE0Teu7erAGX/9Bbp+GaeuSJem5paMK7zxvYlonfAD0wF0PxFclJFRNnbovIyMjNzc3LjY2NnNOzvzjbtOm1LiqP71v6VhzFxjT0pOiUwr2n7wrNSczNi5jX9WiFeMx/rC5sL29tampqaWl5cqVKz+vqyt6JjJ53vM6czn+2urXmFH5pzNm/ON09ft3rz7z8hfPnX2m6EpLS6u3eb0eol/sEHie6aqJr9x0k1hfX4/wvbpXuWbCC5PgDtcqr+ytrb3c2eixuDtMpq/+Xf8Kw/AjL9aMh5I2HWY8Lk7w1c0jR94s6HTnhf/mpwOth2l5l1bp8HVdVwn+moine+/SBfhz80Kv92qD1el0yrKs2hVFcbhcri89u3zfAvzypX7X0dDZabZdtTpVRXG5HIpddlqv2kY5FsDJkqpF18WPWzE38eDhbY8/9ciFvcd+svvRRy9k6qNo/8dx85T808vL/57/0b9O/e7Xv9x9+8+e2pa44mhCadz8IU4LHfjG02WTjAOeLpYauNjgM9fTYvv01kNIhc8WHQWkSJEiRYoUKVLf0mI1F/3NJk5ZduPrN2qqQznw8Seq74/O8MvafBRuWXsxQlPpGq+DG643+f4HCb+YWoIJJphgggkmmGCCCSaYYIIJJphgggkmmGCCCSaYYIIJJphgggkmmGCCCSaYYIIJJphgggkmmGCCCSaYYIIJJphgggkmmGCCCQ4Z236jHYvmqd9g5qLJ2jF6a7pmPEaq+admjDrOFGjGonlxumbMt38EmnGF/KF2PFE+rB0zDbmaMXK/eVIzFr2fx2jGnHw/jiLSiAXZl3+nDSPTD2/QPDPfsOE+Wus9c2pX+JsmjKTIe32pa5ow79wQFaV12Zyc2BVEpgUj94Obu3LmtODvfPk9fwKaBoyks/f6Q+o0YF59uDscT8vMyZnd6XjhY+5/gTjAsDFCt47XjCMcewJhc+Fi0fKD4kAeYLhYcAYFcIaJOfkefW8aWHiYsWzaD70xd+HhiN70zbCxTrm/T6xfOJizLkjqk9oYBmY8mzb2TW0MHYsdE+Zck0UYMkbZbfFgBE0YVdYm9stADBEzlc5t/fMTQ8PMCG/WANmLIWHO4pk7UG5jKFjX+ePSa/cqRIxDXWePxzGbWjCTrTyUMuC8w2KkM//okdGDZU0OjblsZXnmgFmTw+KIiNYdW5J6wmHDwqJulLohx5f7CuFi8WKRWv194xDTDoYRzxQqs7OSgDUMGdzTHyOeG9FuW5yIQ3apYVKB+mKEOGFEob1m66L04WkQRkjkBdFyST67ZuZGfSgUcOpPPccLAsdJFrPsWDhr6+H5k2DILQ6qjz+x2tovyYqavHTxrpmTi30ZvRQbYtJRwafr19+zbuW78bEFen9KqSGM7CR9VFRvMCUVVujS1zF9s8Hwc+WCAAAAAElFTkSuQmCC);mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAF8CAMAAACkDSiYAAADAFBMVEVMaXH////////x7urx7unw7ej////y7+r38+/x8evy7+nx7uny7+ry7+ry7+rx7umNjY308Ov//6/p4+ny7+v18u359/IfAADx7ujo5uP3v7//vYjz8ezy7+vy7+v18+3z8Ovm49739O/w6+Pw6+bIvbfV0dHy7+zz7+vy8Ovz8Ovy8Ov18u318e3z8Ovw7+j6+PPx7+r18+3x6uPx8Or29PD18uzu5+Dy8Ov08Ov69/L49fHv7Of38+718u749vH7+fT29O/x7ujy7+r49/L39O7q5+Dv7efy7+jx7un59/P7+PPw8Onz8e318ez29PDz8Or08ez29O/08Oz28+3y7+vx7un38O7y7ur28u318u329O718u35+PX18u3y7ur6+PPs6OT6+PT08Ovq6uPs5+f18e728/Dx7uj18Ov18+369/Lq6ur38/D7+fb49vHz7+r08uzo5uLs6efx7ur28u3z8Oz18ezy7+r28u328+/v7uj18+7z8Ovy7ef29e/49vLu7unt7ef5+PT18u36+PP08uz08Ovw6+aQ/5D39vD5+PL49vD28u729O7y7+r38+77+/j59vH39e/w7en08Ov28+7x7uns2uP39fDy7+z08ez18+3o/+jz8Ov49PH7+PPy7+ry7+ny7+j08Oz39e/z8ez29fH08ez6+PT49fH49e/l5d7w7+jy7+ry8Or08Ov39vL59vL18u/7+vj39vH49vHx7+z49e/59/T7+fT69/L59/D39e/x7+rv7Ofu7Ob39vP49/T7+/jw7ej49u/7+/bz8Orz7ur6+PXy8Ovy8Ov39e749/Pq6uL49vT4+PH38+339fD28+/18u7z8+3v7ur49PDz8Ov08ez9+fT//fj///r//ff//vn39fDy7un7+PPz7+r39O/++/b8+fX///n9+vX///v69vH//Pf///z79/P28+3///j8+vb////7+vX49fD9+/X59/L59/X9+vT++/X+/Pf///718u369/H//vrz8Oz//fn18uxFhgqHAAAA2HRSTlMAAwH8/VkC/vInqPz8+/37Av4DBPr8/gH9FgQCQ0hdU2sQ/Rs1BwtNPnH9/v1fNDr0/UkHRnxPFfs328Eg0Hrk/t1BZ/38GlIwTMj8CFXT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)}
 .intro__mask{overflow:hidden;padding:4px 0}
+.intro__tag{margin:0;font:400 clamp(20px,2vw,28px)/1.3 var(--f-display);color:var(--muted)}
+html[lang="en"] .intro__tag{font-style:italic}
+.foot__tag{display:grid;gap:12px;justify-items:start}
+.foot__tag em{font:400 18px/1.3 var(--f-display);color:rgba(245,240,232,.7)}
 
 /* ---------- hero ---------- */
 .hero{padding-top:calc(var(--navh) + env(safe-area-inset-top,0px));min-height:100svh;display:grid;grid-template-columns:repeat(12,1fr);position:relative}
-.hero__media{grid-column:1 / span 7;height:calc(100svh - var(--navh));min-height:560px;position:relative;overflow:hidden;margin:0}
+.hero__media{grid-column:1 / span 7;height:calc(100svh - var(--navh) - clamp(16px,3vh,32px));min-height:560px;position:relative;overflow:hidden;margin:clamp(16px,3vh,32px) 0 0;margin-inline-start:var(--pad)}
 .hero__media img{width:100%;height:115%;object-fit:cover;object-position:50% 35%}
 .hero__text{grid-column:8 / span 5;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vh,48px) var(--pad) clamp(28px,5vh,56px)}
 .hero h1{font-size:clamp(52px,5.6vw,104px)}
 .hero__sub{max-width:28ch;margin:0 0 8px;font-size:15px;color:var(--muted)}
 .hero__inset{position:absolute;bottom:clamp(28px,6vh,64px);inset-inline-start:calc(100% * 7 / 12 - 7vw);width:clamp(120px,11vw,190px);z-index:2}
-.hero__inset .media{aspect-ratio:4/5;outline:8px solid var(--bg);transition:outline-color .9s}
+.hero__inset .media{aspect-ratio:4/5;outline:8px solid var(--bg)}
 .hero__inset .cap{margin-top:14px;padding-inline-start:0}
 
 /* ---------- statement ---------- */
@@ -191,18 +204,18 @@ html,body{overflow-x:clip}
 .chc__head > div{grid-column:1 / span 7;display:grid;gap:22px}
 .chc__head .ch-text{grid-column:9 / span 4}
 .chc__grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
-.chc__grid > a{display:block}
-.chc__grid > a:nth-child(1){grid-column:1 / span 4}
-.chc__grid > a:nth-child(1) .media{aspect-ratio:4/5}
-.chc__grid > a:nth-child(2){grid-column:6 / span 3;margin-top:18vh}
-.chc__grid > a:nth-child(2) .media{aspect-ratio:3/4}
-.chc__grid > a:nth-child(3){grid-column:10 / span 3;margin-top:-6vh}
-.chc__grid > a:nth-child(3) .media{aspect-ratio:4/5}
+.chc__grid > div{display:block}
+.chc__grid > div:nth-child(1){grid-column:1 / span 4}
+.chc__grid > div:nth-child(1) .media{aspect-ratio:4/5}
+.chc__grid > div:nth-child(2){grid-column:6 / span 3;margin-top:18vh}
+.chc__grid > div:nth-child(2) .media{aspect-ratio:3/4}
+.chc__grid > div:nth-child(3){grid-column:10 / span 3;margin-top:-6vh}
+.chc__grid > div:nth-child(3) .media{aspect-ratio:4/5}
 .media{background:var(--rule)}
 
 /* ---------- chapter D: pinned slit reveal ---------- */
 .chd{position:relative;height:100svh;overflow:hidden;color:var(--ivory);background:var(--navy)}
-.chd__img{position:absolute;inset:0;margin:0;clip-path:inset(0% 0% 0% 0%)}
+.chd__img{position:absolute;inset:0;margin:0}
 .chd__img img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
 .chd__veil{position:absolute;inset:0;background:rgba(20,26,38,.28)}
 .chd__text{position:absolute;inset:auto var(--gut-r) clamp(36px,8vh,80px) var(--gut);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:end}
@@ -210,9 +223,9 @@ html,body{overflow-x:clip}
 .chd__text .side{grid-column:10 / span 3;display:grid;gap:10px}
 .chd__text .kick .sun{color:var(--beige)}
 .chd__row{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:clamp(56px,10vh,110px) var(--gut-r) clamp(120px,18vh,200px) var(--gut)}
-.chd__row > a:nth-child(1){grid-column:2 / span 3}
-.chd__row > a:nth-child(2){grid-column:6 / span 3;margin-top:10vh}
-.chd__row > a:nth-child(3){grid-column:10 / span 3}
+.chd__row > div:nth-child(1){grid-column:2 / span 3}
+.chd__row > div:nth-child(2){grid-column:6 / span 3;margin-top:10vh}
+.chd__row > div:nth-child(3){grid-column:10 / span 3}
 .chd__row .media{aspect-ratio:3/4}
 
 /* ---------- collections index ---------- */
@@ -228,10 +241,10 @@ html[lang="fa"] .idx__name{line-height:1.3;letter-spacing:0}
 html[lang="en"] .idx li:nth-child(even) .idx__name{font-style:italic}
 .idx li a:hover .idx__name{transform:translateX(1.4vw)}
 html[dir="rtl"] .idx li a:hover .idx__name{transform:translateX(-1.4vw)}
-.idx__thumb{display:none;width:64px;aspect-ratio:3/4;overflow:hidden}
+.idx__thumb{display:none;width:64px;aspect-ratio:3/4;overflow:hidden;border-radius:999px 999px 0 0}
 .idx__thumb img{width:100%;height:100%;object-fit:cover}
 .idx__season{grid-column:3;font-size:13px;color:var(--muted)}
-.peek{position:fixed;left:0;top:0;z-index:40;width:clamp(200px,17vw,300px);aspect-ratio:3/4;pointer-events:none;overflow:hidden;clip-path:inset(50% 50% 50% 50%);will-change:transform}
+.peek{position:fixed;left:0;top:0;z-index:40;width:clamp(200px,17vw,300px);aspect-ratio:3/4;pointer-events:none;overflow:hidden;border-radius:999px 999px 0 0;clip-path:inset(50% 50% 50% 50%);will-change:transform}
 .peek img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
 .peek img.on{opacity:1}
 
@@ -316,7 +329,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
 .form .buy{margin-top:16px}
 
 /* ---------- back to top ---------- */
-.totop{position:fixed;z-index:58;inset-inline-end:calc(var(--gut-r) + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border:0;padding:0;background:var(--bg);color:var(--ink);border-radius:50%;cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .5s var(--ease),transform .6s var(--ease),background-color .9s,color .9s}
+.totop{position:fixed;z-index:58;inset-inline-end:calc(var(--gut-r) + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border:0;padding:0;background:var(--bg);color:var(--ink);border-radius:50%;cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .5s var(--ease),transform .6s var(--ease)}
 .totop.on{opacity:1;transform:none;pointer-events:auto}
 .totop svg{width:100%;height:100%;overflow:visible}
 .totop .trk{fill:none;stroke:var(--rule);stroke-width:1}
@@ -336,7 +349,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   .menu__pic{display:none}
   .menu nav a{font-size:clamp(44px,13vw,68px)}
   .hero{display:block}
-  .hero__media{height:68svh;min-height:380px}
+  .hero__media{height:68svh;min-height:380px;margin:12px var(--gut-r) 0 var(--gut)}
   .hero__text{padding:30px var(--gut-r) 56px var(--gut);gap:26px}
   .hero h1{font-size:clamp(48px,13.5vw,76px)}
   .hero__inset{display:none}
@@ -361,16 +374,16 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   .chc__head{display:grid;grid-template-columns:1fr;row-gap:20px;margin-bottom:48px}
   .chc__head > div,.chc__head .ch-text{grid-column:1}
   .chc__grid{grid-template-columns:repeat(6,1fr);row-gap:44px}
-  .chc__grid > a:nth-child(1){grid-column:1 / span 5}
-  .chc__grid > a:nth-child(2){grid-column:3 / span 4;margin-top:0}
-  .chc__grid > a:nth-child(3){grid-column:1 / span 4;margin-top:0}
+  .chc__grid > div:nth-child(1){grid-column:1 / span 5}
+  .chc__grid > div:nth-child(2){grid-column:3 / span 4;margin-top:0}
+  .chc__grid > div:nth-child(3){grid-column:1 / span 4;margin-top:0}
   .chd__text{display:grid;grid-template-columns:1fr;row-gap:18px}
   .chd__text .ch-title,.chd__text .side{grid-column:1}
   .chd__text .ch-title{font-size:clamp(60px,17vw,96px)}
   .chd__row{grid-template-columns:repeat(6,1fr);row-gap:30px;column-gap:14px;padding-bottom:110px}
-  .chd__row > a:nth-child(1){grid-column:1 / span 4}
-  .chd__row > a:nth-child(2){grid-column:3 / span 4;margin-top:0}
-  .chd__row > a:nth-child(3){grid-column:1 / span 3}
+  .chd__row > div:nth-child(1){grid-column:1 / span 4}
+  .chd__row > div:nth-child(2){grid-column:3 / span 4;margin-top:0}
+  .chd__row > div:nth-child(3){grid-column:1 / span 3}
   .idx li a{grid-template-columns:64px 1fr;gap:16px}
   .idx__thumb{display:block}
   .idx__name{font-size:clamp(32px,9vw,48px)}
@@ -398,6 +411,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   <div class="intro__in">
     <svg class="sun" viewBox="0 0 120 64"><path pathLength="1" d="M68 58H114M66.5 53.3L95.6 32.1M62.2 50.3L74.9 6.1M57.8 50.3L45.1 6.1M53.5 53.3L24.4 32.1M52 58H6"/></svg>
     <div class="intro__mask"><div class="intro__word"><i></i><i></i><i></i><i></i></div></div>
+    <p class="intro__tag" data-i="slogan">اندک، اما ماندگار</p>
   </div>
 </div>
 
@@ -433,17 +447,17 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
 <main id="top">
   <!-- hero -->
   <section class="hero">
-    <figure class="hero__media"><img src="assets/img/p5.webp" alt="" fetchpriority="high"></figure>
+    <figure class="hero__media f-arch"><img src="assets/img/p5.webp" alt="" fetchpriority="high"></figure>
     <div class="hero__text">
       <div class="kick"><svg class="sun"><use href="#sun"/></svg><span data-i="season">زمستان ۱۴۰۵</span></div>
-      <h1 class="display"><span class="ln"><span data-i="h_a">قطعه به قطعه</span></span><span class="ln it"><span data-i="h_b">انتخاب‌شده.</span></span></h1>
+      <h1 class="display"><span class="ln"><span data-i="h_a">اندک،</span></span><span class="ln it"><span data-i="h_b">اما ماندگار.</span></span></h1>
       <div>
-        <p class="hero__sub" data-i="sub">پوشاک زنانه در تعداد محدود. هر هفته قطعه‌های تازه.</p>
-        <a class="cta" href="#index" data-magnetic><span class="line"></span><span data-i="cta">دیدن کالکشن</span></a>
+        <p class="hero__sub" data-i="sub">پوشاک زنانه در تعداد محدود؛ از هر مدل فقط چند قطعه.</p>
+        <a class="cta" href="#index" data-magnetic><span class="line"></span><span data-i="cta">دیدن قطعه‌ها</span></a>
       </div>
     </div>
     <div class="hero__inset hov piece" data-cursor>
-      <figure class="media"><img src="assets/img/sq14.webp" alt=""></figure>
+      <figure class="media f-oval"><img src="assets/img/sq14.webp" alt=""></figure>
       <div class="cap"><b data-i="c14">کت بروکه قرمز</b><span data-i="s_w">زمستان</span><span class="price" data-price="c14"></span><button class="add ul" type="button" data-add="c14" data-i="add">افزودن به سبد</button></div>
     </div>
   </section>
@@ -451,21 +465,21 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   <!-- statement -->
   <section class="stmt">
     <div class="stmt__rule"><span>TALI</span><hr><svg class="sun"><use href="#sun"/></svg></div>
-    <p data-i="stmt" data-split>خانه‌ای کوچک از قطعه‌های گردآوری‌شده. از هر مدل چند عدد، و هیچ‌کدام دوباره تکرار نمی‌شود.</p>
+    <p data-i="stmt" data-split>لباس خوب را کم می‌خرند و زیاد می‌پوشند. ما هر قطعه را با همین معیار انتخاب می‌کنیم.</p>
   </section>
 
   <!-- chapter A -->
   <section class="ch cha" id="cha">
     <div class="cha__big hov piece" data-cursor>
-      <figure class="media reveal"><img src="assets/img/L4.webp" alt="" loading="lazy" data-par></figure>
+      <figure class="media reveal f-mat"><img src="assets/img/L4.webp" alt="" loading="lazy" data-par></figure>
       <div class="cap"><b data-i="c4">کت و شلوار قهوه‌ای با نوار کرم</b><span data-i="s_aw">پاییز و زمستان</span><span class="price" data-price="c4"></span><button class="add ul" type="button" data-add="c4" data-i="add">افزودن به سبد</button></div>
     </div>
     <div class="cha__side">
       <div class="kick"><svg class="sun"><use href="#sun"/></svg><span data-i="s_aw">پاییز و زمستان</span></div>
-      <h2 class="display ch-title"><span class="ln"><span data-i="t1a">براون</span></span><span class="ln it"><span data-i="t1b">مود</span></span></h2>
-      <p class="ch-text" data-i="x1">قهوه‌ای از سر تا پا. ست، دامن بلند و کلاه حصیری.</p>
+      <h2 class="display ch-title"><span class="ln"><span data-i="t1a">رنگ</span></span><span class="ln it"><span data-i="t1b">خاک</span></span></h2>
+      <p class="ch-text" data-i="x1">قهوه‌ای و کرم، از سر تا پا. ست‌هایی که با هم یا جدا پوشیده می‌شوند.</p>
       <div class="cha__small hov piece" data-cursor>
-        <figure class="media reveal"><img src="assets/img/L18.webp" alt="" loading="lazy"></figure>
+        <figure class="media reveal f-arch"><img src="assets/img/L18.webp" alt="" loading="lazy"></figure>
         <div class="cap"><b data-i="c18">شومیز و شلوار کمربنددار</b><span class="price" data-price="c18"></span><button class="add ul" type="button" data-add="c18" data-i="add">افزودن به سبد</button></div>
       </div>
     </div>
@@ -474,21 +488,21 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   <!-- chapter B -->
   <section class="ch chb" id="chb">
     <div class="chb__row">
-      <h2 class="display chb__w" data-from="-1"><span data-i="t2a">فصل</span></h2>
-      <a class="chb__img hov" href="#index" data-cursor><figure class="media reveal"><img src="assets/img/L19.webp" alt="" loading="lazy" style="object-position:50% 30%"></figure></a>
-      <h2 class="display chb__w it" data-from="1"><span data-i="t2b">بافت</span></h2>
+      <h2 class="display chb__w" data-from="-1"><span data-i="t2a">لایه‌های</span></h2>
+      <a class="chb__img hov" href="#index" data-cursor><figure class="media reveal f-arch f-mat"><img src="assets/img/L19.webp" alt="" loading="lazy" style="object-position:50% 30%"></figure></a>
+      <h2 class="display chb__w it" data-from="1"><span data-i="t2b">نرم</span></h2>
     </div>
     <div class="chb__foot">
       <div class="chb__a hov piece" data-cursor>
-        <figure class="media reveal"><img src="assets/img/sq8.webp" alt="" loading="lazy"></figure>
+        <figure class="media reveal f-oval"><img src="assets/img/sq8.webp" alt="" loading="lazy"></figure>
         <div class="cap"><b data-i="c8">سویشرت گلدوزی‌شده، کرم</b><span class="price" data-price="c8"></span><button class="add ul" type="button" data-add="c8" data-i="add">افزودن به سبد</button></div>
       </div>
       <div class="chb__text">
         <div class="kick"><svg class="sun"><use href="#sun"/></svg><span data-i="s_aw">پاییز و زمستان</span></div>
-        <p class="ch-text" data-i="x2">بافت نرم برای صبح‌های سرد.</p>
+        <p class="ch-text" data-i="x2">بافت و گلدوزی برای روزهای کوتاه زمستان.</p>
       </div>
       <div class="chb__b hov piece" data-cursor>
-        <figure class="media reveal"><img src="assets/img/L13.webp" alt="" loading="lazy"></figure>
+        <figure class="media reveal f-mat"><img src="assets/img/L13.webp" alt="" loading="lazy"></figure>
         <div class="cap"><b data-i="c13">سویشرت و شلوار گشاد</b><span class="price" data-price="c13"></span><button class="add ul" type="button" data-add="c13" data-i="add">افزودن به سبد</button></div>
       </div>
     </div>
@@ -499,14 +513,14 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
     <div class="chc__head">
       <div>
         <div class="kick"><svg class="sun"><use href="#sun"/></svg><span data-i="s_w">زمستان</span></div>
-        <h2 class="display ch-title"><span class="ln"><span data-i="t3a">کت‌های</span></span><span class="ln it"><span data-i="t3b">خاص</span></span></h2>
+        <h2 class="display ch-title"><span class="ln"><span data-i="t3a">یک کت،</span></span><span class="ln it"><span data-i="t3b">کافی است.</span></span></h2>
       </div>
-      <p class="ch-text" data-i="x3">بروکه و دکمه‌ی طلایی. یک کت کافی است.</p>
+      <p class="ch-text" data-i="x3">بروکه، ژاکارد و دکمه‌ی طلایی. روی ساده‌ترین لباس هم می‌درخشد.</p>
     </div>
     <div class="chc__grid">
-      <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L14.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c14">کت بروکه قرمز</b><span data-i="j1">یراق سرمه‌ای، دکمه‌ی طلایی</span><span class="price" data-price="c14"></span><button class="add ul" type="button" data-add="c14" data-i="add">افزودن به سبد</button></div></div>
-      <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L23.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c23">کت بروکه طلایی</b><span data-i="j1">یراق سرمه‌ای، دکمه‌ی طلایی</span><span class="price" data-price="c23"></span><button class="add ul" type="button" data-add="c23" data-i="add">افزودن به سبد</button></div></div>
-      <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L12.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c12">کت ژاکارد گل‌رز</b><span data-i="j2">زمینه‌ی مشکی، دکمه‌ی طلایی</span><span class="price" data-price="c12"></span><button class="add ul" type="button" data-add="c12" data-i="add">افزودن به سبد</button></div></div>
+      <div class="hov piece" data-cursor><figure class="media reveal f-arch"><img src="assets/img/L14.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c14">کت بروکه قرمز</b><span data-i="j1">یراق سرمه‌ای، دکمه‌ی طلایی</span><span class="price" data-price="c14"></span><button class="add ul" type="button" data-add="c14" data-i="add">افزودن به سبد</button></div></div>
+      <div class="hov piece" data-cursor><figure class="media reveal f-mat"><img src="assets/img/L23.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c23">کت بروکه طلایی</b><span data-i="j1">یراق سرمه‌ای، دکمه‌ی طلایی</span><span class="price" data-price="c23"></span><button class="add ul" type="button" data-add="c23" data-i="add">افزودن به سبد</button></div></div>
+      <div class="hov piece" data-cursor><figure class="media reveal f-arch"><img src="assets/img/L12.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c12">کت ژاکارد گل‌رز</b><span data-i="j2">زمینه‌ی مشکی، دکمه‌ی طلایی</span><span class="price" data-price="c12"></span><button class="add ul" type="button" data-add="c12" data-i="add">افزودن به سبد</button></div></div>
     </div>
   </section>
 
@@ -515,36 +529,36 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
     <figure class="chd__img"><img src="assets/img/L1.webp" alt="" loading="lazy"></figure>
     <div class="chd__veil"></div>
     <div class="chd__text">
-      <h2 class="display ch-title"><span class="ln"><span data-i="t4a">کالکشن</span></span><span class="ln it"><span data-i="t4b">تابستان</span></span></h2>
+      <h2 class="display ch-title"><span class="ln"><span data-i="t4a">نور</span></span><span class="ln it"><span data-i="t4b">تابستان</span></span></h2>
       <div class="side">
         <div class="kick"><svg class="sun"><use href="#sun"/></svg><span data-i="s_ss">بهار و تابستان</span></div>
-        <p class="ch-text" data-i="x4">کتان، دامن چین‌دار و کلاه حصیری. در بهار برمی‌گردد.</p>
+        <p class="ch-text" data-i="x4">کتان، تور و کلاه حصیری. با اولین روز گرم برمی‌گردد.</p>
       </div>
     </div>
   </section>
   <div class="chd__row">
-    <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L10.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c10">دامن چندطبقه‌ی کرم</b><span class="price" data-price="c10"></span><button class="add ul" type="button" data-add="c10" data-i="add">افزودن به سبد</button></div></div>
-    <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L17.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c17">دامن تور صورتی</b><span class="price" data-price="c17"></span><button class="add ul" type="button" data-add="c17" data-i="add">افزودن به سبد</button></div></div>
-    <div class="hov piece" data-cursor><figure class="media reveal"><img src="assets/img/L20.webp" alt="" loading="lazy" style="object-position:50% 60%"></figure><div class="cap"><b data-i="c20">تیشرت طرح‌دار</b><span class="price" data-price="c20"></span><button class="add ul" type="button" data-add="c20" data-i="add">افزودن به سبد</button></div></div>
+    <div class="hov piece" data-cursor><figure class="media reveal f-mat"><img src="assets/img/L10.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c10">دامن چندطبقه‌ی کرم</b><span class="price" data-price="c10"></span><button class="add ul" type="button" data-add="c10" data-i="add">افزودن به سبد</button></div></div>
+    <div class="hov piece" data-cursor><figure class="media reveal f-arch"><img src="assets/img/L17.webp" alt="" loading="lazy"></figure><div class="cap"><b data-i="c17">دامن تور صورتی</b><span class="price" data-price="c17"></span><button class="add ul" type="button" data-add="c17" data-i="add">افزودن به سبد</button></div></div>
+    <div class="hov piece" data-cursor><figure class="media reveal f-mat"><img src="assets/img/L20.webp" alt="" loading="lazy" style="object-position:50% 60%"></figure><div class="cap"><b data-i="c20">تیشرت طرح‌دار</b><span class="price" data-price="c20"></span><button class="add ul" type="button" data-add="c20" data-i="add">افزودن به سبد</button></div></div>
   </div>
 
   <!-- index -->
   <section class="idx" id="index">
     <div class="idx__head"><span data-i="nav_col">کالکشن‌ها</span><svg class="sun"><use href="#sun"/></svg></div>
     <ol>
-      <li><a href="#" data-soon data-peek="0"><span class="idx__thumb"><img src="assets/img/L4.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n1">براون مود</span><span class="idx__season" data-i="s_aw">پاییز و زمستان</span></a></li>
-      <li><a href="#" data-soon data-peek="1"><span class="idx__thumb"><img src="assets/img/L19.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n2">فصل بافت</span><span class="idx__season" data-i="s_aw">پاییز و زمستان</span></a></li>
-      <li><a href="#" data-soon data-peek="2"><span class="idx__thumb"><img src="assets/img/L14.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n3">کت‌های خاص</span><span class="idx__season" data-i="s_w">زمستان</span></a></li>
-      <li><a href="#" data-soon data-peek="3"><span class="idx__thumb"><img src="assets/img/L1.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n4">کالکشن تابستان</span><span class="idx__season" data-i="s_ss">بهار و تابستان</span></a></li>
+      <li><a href="#" data-soon data-peek="0"><span class="idx__thumb"><img src="assets/img/L4.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n1">رنگ خاک</span><span class="idx__season" data-i="s_aw">پاییز و زمستان</span></a></li>
+      <li><a href="#" data-soon data-peek="1"><span class="idx__thumb"><img src="assets/img/L19.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n2">لایه‌های نرم</span><span class="idx__season" data-i="s_aw">پاییز و زمستان</span></a></li>
+      <li><a href="#" data-soon data-peek="2"><span class="idx__thumb"><img src="assets/img/L14.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n3">کت‌های بروکه</span><span class="idx__season" data-i="s_w">زمستان</span></a></li>
+      <li><a href="#" data-soon data-peek="3"><span class="idx__thumb"><img src="assets/img/L1.webp" alt="" loading="lazy"></span><span class="idx__name" data-i="n4">نور تابستان</span><span class="idx__season" data-i="s_ss">بهار و تابستان</span></a></li>
     </ol>
   </section>
 
   <!-- close -->
   <section class="close" id="contact">
     <div class="close__grid">
-      <h2 class="display"><span class="ln"><span data-i="q_a">کدام قطعه</span></span><span class="ln it"><span data-i="q_b">مال شماست؟</span></span></h2>
+      <h2 class="display"><span class="ln"><span data-i="q_a">قطعه‌ی خودتان</span></span><span class="ln it"><span data-i="q_b">را پیدا کنید.</span></span></h2>
       <div class="close__act">
-        <p data-i="q_p">برای سایز و موجودی پیام بدهید.</p>
+        <p data-i="q_p">برای سایز و موجودی، در دایرکت اینستاگرام پیام بدهید.</p>
         <a class="cta" href="https://instagram.com/tali.collectibles" target="_blank" rel="noopener" data-magnetic><span class="line"></span><span data-i="q_cta">پیام در اینستاگرام</span></a>
       </div>
       <div class="close__info">
@@ -553,7 +567,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
       </div>
     </div>
     <footer class="foot">
-      <span class="logo-full" role="img" aria-label="TALI Premium Collection"></span>
+      <div class="foot__tag"><span class="logo-full" role="img" aria-label="TALI Premium Collection"></span><em data-i="slogan">اندک، اما ماندگار</em></div>
       <ul>
         <li><a class="ul" href="#index" data-i="nav_col">کالکشن‌ها</a></li>
         <li><a class="ul" href="#" data-soon data-i="nav_look">لوک‌بوک</a></li>
@@ -573,7 +587,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   <div class="drawer__head"><h2 id="cartTitle" data-i="bag">سبد خرید</h2><button class="x" type="button" data-close aria-label="Close"></button></div>
   <div class="drawer__body">
     <ul class="lines"></ul>
-    <div class="empty"><p data-i="empty">سبد خرید شما خالی است.</p><a class="cta" href="#index" data-close><span class="line"></span><span data-i="cta">دیدن کالکشن</span></a></div>
+    <div class="empty"><p data-i="empty">سبد خرید شما خالی است.</p><a class="cta" href="#index" data-close><span class="line"></span><span data-i="cta">دیدن قطعه‌ها</span></a></div>
   </div>
   <div class="drawer__foot">
     <div class="sum"><span data-i="subtotal">جمع کل</span><b class="total">۰</b></div>
@@ -606,42 +620,42 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
 
   /* ================= copy ================= */
   var T={
-    fa:{menu:'منو',close:'بستن',ig:'اینستاگرام',view:'دیدن',
+    fa:{slogan:'اندک، اما ماندگار',menu:'منو',close:'بستن',ig:'اینستاگرام',view:'دیدن',
       nav_col:'کالکشن‌ها',nav_look:'لوک‌بوک',nav_about:'درباره ما',nav_contact:'تماس',
-      season:'زمستان ۱۴۰۵',h_a:'قطعه به قطعه',h_b:'انتخاب‌شده.',sub:'پوشاک زنانه در تعداد محدود. هر هفته قطعه‌های تازه.',cta:'دیدن کالکشن',
-      stmt:'خانه‌ای کوچک از قطعه‌های گردآوری‌شده. از هر مدل چند عدد، و هیچ‌کدام دوباره تکرار نمی‌شود.',
+      season:'زمستان ۱۴۰۵',h_a:'اندک،',h_b:'اما ماندگار.',sub:'پوشاک زنانه در تعداد محدود؛ از هر مدل فقط چند قطعه.',cta:'دیدن قطعه‌ها',
+      stmt:'لباس خوب را کم می‌خرند و زیاد می‌پوشند. ما هر قطعه را با همین معیار انتخاب می‌کنیم.',
       s_aw:'پاییز و زمستان',s_w:'زمستان',s_ss:'بهار و تابستان',
-      t1a:'براون',t1b:'مود',x1:'قهوه‌ای از سر تا پا. ست، دامن بلند و کلاه حصیری.',
-      t2a:'فصل',t2b:'بافت',x2:'بافت نرم برای صبح‌های سرد.',
-      t3a:'کت‌های',t3b:'خاص',x3:'بروکه و دکمه‌ی طلایی. یک کت کافی است.',
-      t4a:'کالکشن',t4b:'تابستان',x4:'کتان، دامن چین‌دار و کلاه حصیری. در بهار برمی‌گردد.',
+      t1a:'رنگ',t1b:'خاک',x1:'قهوه‌ای و کرم، از سر تا پا. ست‌هایی که با هم یا جدا پوشیده می‌شوند.',
+      t2a:'لایه‌های',t2b:'نرم',x2:'بافت و گلدوزی برای روزهای کوتاه زمستان.',
+      t3a:'یک کت،',t3b:'کافی است.',x3:'بروکه، ژاکارد و دکمه‌ی طلایی. روی ساده‌ترین لباس هم می‌درخشد.',
+      t4a:'نور',t4b:'تابستان',x4:'کتان، تور و کلاه حصیری. با اولین روز گرم برمی‌گردد.',
       c4:'کت و شلوار قهوه‌ای با نوار کرم',c18:'شومیز و شلوار کمربنددار',c8:'سویشرت گلدوزی‌شده، کرم',c13:'سویشرت و شلوار گشاد',
       c14:'کت بروکه قرمز',c23:'کت بروکه طلایی',c12:'کت ژاکارد گل‌رز',j1:'یراق سرمه‌ای، دکمه‌ی طلایی',j2:'زمینه‌ی مشکی، دکمه‌ی طلایی',
       c10:'دامن چندطبقه‌ی کرم',c17:'دامن تور صورتی',c20:'تیشرت طرح‌دار',
-      n1:'براون مود',n2:'فصل بافت',n3:'کت‌های خاص',n4:'کالکشن تابستان',
-      q_a:'کدام قطعه',q_b:'مال شماست؟',q_p:'برای سایز و موجودی پیام بدهید.',q_cta:'پیام در اینستاگرام',
-      c_ig:'اینستاگرام',c_tel:'تلفن',soon:'این صفحه در مرحله بعد ساخته می‌شود.',lang:'EN',title:'TALI | پوشاک زنانه',
+      n1:'رنگ خاک',n2:'لایه‌های نرم',n3:'کت‌های بروکه',n4:'نور تابستان',
+      q_a:'قطعه‌ی خودتان',q_b:'را پیدا کنید.',q_p:'برای سایز و موجودی، در دایرکت اینستاگرام پیام بدهید.',q_cta:'پیام در اینستاگرام',
+      c_ig:'اینستاگرام',c_tel:'تلفن',soon:'این صفحه در مرحله بعد ساخته می‌شود.',lang:'EN',title:'TALI | اندک، اما ماندگار',
       login:'ورود',bag:'سبد خرید',add:'افزودن به سبد',empty:'سبد خرید شما خالی است.',subtotal:'جمع کل',
       pnote:'قیمت‌ها نمونه‌اند. پرداخت در نسخه‌ی نهایی فعال می‌شود.',checkout:'تکمیل خرید',checkout_msg:'پرداخت در نسخه‌ی ووکامرس فعال می‌شود.',
       login_t:'ورود یا ثبت‌نام',login_lead:'با شماره موبایل وارد شوید. اگر حساب ندارید، همین‌جا ساخته می‌شود.',phone_l:'شماره موبایل',
       phone_err:'شماره را کامل وارد کنید، مثل 09121234567',send_code:'دریافت کد تأیید',
       login_ok:'در نسخه‌ی نهایی، کد تأیید به این شماره پیامک می‌شود. این نمونه هنوز به سرور وصل نیست.',
       remove:'حذف',totop:'بازگشت به بالا',theme_d:'حالت تیره',theme_l:'حالت روشن',added:'به سبد اضافه شد',cur:' تومان'},
-    en:{menu:'Menu',close:'Close',ig:'Instagram',view:'View',
+    en:{slogan:'Few, but lasting',menu:'Menu',close:'Close',ig:'Instagram',view:'View',
       nav_col:'Collections',nav_look:'Lookbook',nav_about:'About',nav_contact:'Contact',
-      season:'Winter 2026',h_a:'Chosen',h_b:'piece by piece.',sub:'Womenswear in small numbers. New pieces every week.',cta:'Explore the collection',
-      stmt:'A small house of collected pieces. A few of each style, and none of them repeated.',
+      season:'Winter 2026',h_a:'Few,',h_b:'but lasting.',sub:'Womenswear in small numbers, only a few of each style.',cta:'See the pieces',
+      stmt:'Good clothes are bought rarely and worn often. Every piece here is chosen by that rule.',
       s_aw:'Autumn and winter',s_w:'Winter',s_ss:'Spring and summer',
-      t1a:'Brown',t1b:'mode',x1:'Chocolate brown, head to toe. Sets, long skirts and a straw hat.',
-      t2a:'Knit',t2b:'weather',x2:'Soft knits for cold mornings.',
-      t3a:'Statement',t3b:'jackets',x3:'Brocade and gold buttons. One jacket is enough.',
-      t4a:'Summer',t4b:'edit',x4:'Linen, ruffles and straw hats. Back in spring.',
+      t1a:'Earth',t1b:'tones',x1:'Brown and cream, head to toe. Sets that work together or apart.',
+      t2a:'Soft',t2b:'layers',x2:'Knits and embroidery for the short days of winter.',
+      t3a:'One jacket',t3b:'is enough.',x3:'Brocade, jacquard and gold buttons. It lifts the plainest outfit.',
+      t4a:'Summer',t4b:'light',x4:'Linen, tulle and straw hats. Back with the first warm day.',
       c4:'Brown jacket and trousers, cream piping',c18:'Shirt and belted trousers',c8:'Embroidered sweatshirt, cream',c13:'Sweatshirt and wide trousers',
       c14:'Brocade jacket, red',c23:'Brocade jacket, gold',c12:'Rose jacquard jacket',j1:'Navy braid, gold buttons',j2:'Black ground, gold buttons',
       c10:'Tiered skirt, cream',c17:'Tulle skirt, pink',c20:'Graphic tee',
-      n1:'Brown mode',n2:'Knit weather',n3:'Statement jackets',n4:'Summer edit',
-      q_a:'Which piece',q_b:'is yours?',q_p:'Message us for sizes and stock.',q_cta:'Message us on Instagram',
-      c_ig:'Instagram',c_tel:'Phone',soon:'This page comes in the next step.',lang:'FA',title:'TALI | Womenswear',
+      n1:'Earth tones',n2:'Soft layers',n3:'Brocade jackets',n4:'Summer light',
+      q_a:'Find the one',q_b:'you will keep.',q_p:'For sizes and stock, message us on Instagram.',q_cta:'Message us on Instagram',
+      c_ig:'Instagram',c_tel:'Phone',soon:'This page comes in the next step.',lang:'FA',title:'TALI | Few, but lasting',
       login:'Log in',bag:'Bag',add:'Add to bag',empty:'Your bag is empty.',subtotal:'Subtotal',
       pnote:'Prices are examples. Checkout goes live in the final version.',checkout:'Checkout',checkout_msg:'Checkout goes live with the WooCommerce version.',
       login_t:'Log in or sign up',login_lead:'Use your mobile number. If you don’t have an account yet, one is created here.',phone_l:'Mobile number',
@@ -705,7 +719,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   var themeBtn=document.querySelector('[data-theme-toggle]');
   function isDark(){var a=root.getAttribute('data-theme');return a?a==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches}
   function themeLabel(){themeBtn.setAttribute('aria-label',isDark()?T[lang].theme_l:T[lang].theme_d)}
-  themeBtn.addEventListener('click',function(){var n=isDark()?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('tali-theme',n)}catch(e){}themeLabel()});
+  themeBtn.addEventListener('click',function(){var n=isDark()?'light':'dark';root.classList.add('tt');clearTimeout(themeBtn._t);themeBtn._t=setTimeout(function(){root.classList.remove('tt')},800);root.setAttribute('data-theme',n);if(window.__night)window.__night();try{localStorage.setItem('tali-theme',n)}catch(e){}themeLabel()});
   themeLabel();
 
   /* ================= catalogue (prices are examples) ================= */
@@ -846,6 +860,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   gsap.set('.nav',{yPercent:-100});
   tl.fromTo('.intro .sun path',{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:1.1,ease:'power2.inOut'})
     .from('.intro__word i',{yPercent:105,duration:1,stagger:.08},.35)
+    .from('.intro__tag',{opacity:0,y:10,duration:.8,ease:'power2.out'},.9)
     .to('.intro__in',{y:-30,opacity:0,duration:.7,ease:'power2.in'},1.6)
     .to(intro,{clipPath:'inset(0% 0% 100% 0%)',duration:1.1,ease:'expo.inOut'},1.9)
     .to('.hero__media',{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.inOut'},2.0)
@@ -870,7 +885,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   gsap.utils.toArray('.reveal').forEach(function(f){
     var img=f.querySelector('img');
     var t=gsap.timeline({scrollTrigger:{trigger:f,start:'top 86%'}});
-    t.from(f,{clipPath:'inset(100% 0% 0% 0%)',duration:1.5,ease:'expo.inOut'})
+    t.from(f,{clipPath:'inset(100% 0% 0% 0%)',duration:1.5,ease:'expo.inOut',onComplete:function(){if(f.classList.contains('f-mat')){f.style.clipPath='none';f.classList.add('in')}}})
      .from(img,{scale:1.35,duration:2,ease:'expo.out'},.1);
     if(img.hasAttribute('data-par')) gsap.fromTo(img,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}});
   });
@@ -887,9 +902,17 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
     gsap.fromTo(w,{x:function(){return d*window.innerWidth*.12},opacity:.0},{x:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.chb__row',start:'top 85%',end:'center 50%',scrub:1,invalidateOnRefresh:true}});
   });
 
-  /* chapter C: the page turns to night */
-  ScrollTrigger.create({trigger:'.chc',start:'top 55%',end:'bottom 45%',toggleClass:{targets:body,className:'night'}});
-  gsap.utils.toArray('.chc__grid > a').forEach(function(a,i){
+  /* chapter C: the page fades into night with the scroll, and back to day after the summer frame */
+  var NIGHT={'--bg':'#20283A','--ink':'#F5F0E8','--rule':'rgba(216,202,187,.28)','--muted':'rgba(245,240,232,.62)','--sunc':'#D8CABB','--frame':'rgba(216,202,187,.42)'};
+  function rgba(c){c=(c||'').trim();if(c[0]==='#'){if(c.length===4)c='#'+c[1]+c[1]+c[2]+c[2]+c[3]+c[3];return [parseInt(c.substr(1,2),16),parseInt(c.substr(3,2),16),parseInt(c.substr(5,2),16),1]}var m=c.match(/[\d.]+/g)||[0,0,0];return [+m[0],+m[1],+m[2],m[3]==null?1:+m[3]]}
+  var nIn=0,nOut=0,nP=-1;
+  function night(force){var p=nIn*(1-nOut);p=p*p*(3-2*p);if(!force&&Math.abs(p-nP)<.002)return;nP=p;var cs=getComputedStyle(root);
+    var q=Math.min(1,Math.max(0,(p-.4)/.2));q=q*q*(3-2*q);for(var k in NIGHT){if(p<=0){body.style.removeProperty(k);continue}var a=rgba(cs.getPropertyValue(k)),b=rgba(NIGHT[k]),t=k==='--bg'?p:q;
+      body.style.setProperty(k,'rgba('+Math.round(a[0]+(b[0]-a[0])*t)+','+Math.round(a[1]+(b[1]-a[1])*t)+','+Math.round(a[2]+(b[2]-a[2])*t)+','+(a[3]+(b[3]-a[3])*t).toFixed(3)+')')}}
+  window.__night=function(){night(true)};
+  ScrollTrigger.create({trigger:'.chc',start:'top 95%',end:'top 15%',onUpdate:function(s){nIn=s.progress;night()},onRefresh:function(s){nIn=s.progress;night()}});
+  ScrollTrigger.create({trigger:'.chd__row',start:'top 95%',end:'top 20%',refreshPriority:-1,onUpdate:function(s){nOut=s.progress;night()},onRefresh:function(s){nOut=s.progress;night()}});
+  gsap.utils.toArray('.chc__grid > div').forEach(function(a,i){
     gsap.to(a,{y:[-40,40,-70][i],ease:'none',scrollTrigger:{trigger:'.chc__grid',start:'top bottom',end:'bottom top',scrub:true}});
   });
 
@@ -897,7 +920,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   var mm=gsap.matchMedia();
   mm.add('(min-width: 0px)',function(){
     var d=gsap.timeline({scrollTrigger:{trigger:'.chd',start:'top top',end:'+=110%',pin:true,scrub:1}});
-    d.fromTo('.chd__img',{clipPath:'inset(8% 41% 8% 41%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'power2.inOut',duration:1},0)
+    d.fromTo('.chd__img',{clipPath:function(){return innerWidth<760?'inset(14% 16% 8% 16% round 999px 999px 0px 0px)':'inset(10% 38% 6% 38% round 999px 999px 0px 0px)'}},{clipPath:'inset(0% 0% 0% 0% round 0px 0px 0px 0px)',ease:'power2.inOut',duration:1},0)
      .fromTo('.chd__img img',{scale:1.5},{scale:1,ease:'power2.out',duration:1},0)
      .fromTo('.chd__veil',{opacity:0},{opacity:1,duration:.5},.5)
      .fromTo('.chd .ln > span',{yPercent:110},{yPercent:0,stagger:.08,duration:.45,ease:'expo.out'},.55)
