@@ -156,9 +156,6 @@ html[lang="en"] .intro__tag{font-style:italic}
 .hero__text{grid-column:8 / span 5;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vh,48px) var(--pad) clamp(28px,5vh,56px)}
 .hero h1{font-size:clamp(52px,5.6vw,104px)}
 .hero__sub{max-width:28ch;margin:0 0 8px;font-size:15px;color:var(--muted)}
-.hero__inset{position:absolute;bottom:clamp(28px,6vh,64px);inset-inline-start:calc(100% * 7 / 12 - 7vw);width:clamp(120px,11vw,190px);z-index:2}
-.hero__inset .media{aspect-ratio:4/5;outline:8px solid var(--bg)}
-.hero__inset .cap{margin-top:14px;padding-inline-start:0}
 
 /* ---------- statement ---------- */
 .stmt{padding:clamp(120px,20vh,220px) var(--gut-r) clamp(100px,16vh,180px) var(--gut);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
@@ -352,7 +349,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   .hero__media{height:68svh;min-height:380px;margin:12px var(--gut-r) 0 var(--gut)}
   .hero__text{padding:30px var(--gut-r) 56px var(--gut);gap:26px}
   .hero h1{font-size:clamp(48px,13.5vw,76px)}
-  .hero__inset{display:none}
+
   .stmt{display:block;padding-top:110px;padding-bottom:100px}
   .stmt p{font-size:clamp(28px,7.6vw,40px)}
   .cha{display:block;padding:0 0 110px}
@@ -455,10 +452,6 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
         <p class="hero__sub" data-i="sub">پوشاک زنانه در تعداد محدود؛ از هر مدل فقط چند قطعه.</p>
         <a class="cta" href="#index" data-magnetic><span class="line"></span><span data-i="cta">دیدن قطعه‌ها</span></a>
       </div>
-    </div>
-    <div class="hero__inset hov piece" data-cursor>
-      <figure class="media f-oval"><img src="assets/img/sq14.webp" alt=""></figure>
-      <div class="cap"><b data-i="c14">کت بروکه قرمز</b><span data-i="s_w">زمستان</span><span class="price" data-price="c14"></span><button class="add ul" type="button" data-add="c14" data-i="add">افزودن به سبد</button></div>
     </div>
   </section>
 
@@ -856,7 +849,7 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
   var tl=gsap.timeline({defaults:{ease:'expo.out'}});
   gsap.set('.hero__media',{clipPath:'inset(0% 0% 100% 0%)'});
   gsap.set('.hero .ln > span',{yPercent:110});
-  gsap.set('.hero .kick,.hero__sub,.hero .cta,.hero__inset',{opacity:0,y:18});
+  gsap.set('.hero .kick,.hero__sub,.hero .cta',{opacity:0,y:18});
   gsap.set('.nav',{yPercent:-100});
   tl.fromTo('.intro .sun path',{strokeDasharray:1,strokeDashoffset:1},{strokeDashoffset:0,duration:1.1,ease:'power2.inOut'})
     .from('.intro__word i',{yPercent:105,duration:1,stagger:.08},.35)
@@ -868,14 +861,12 @@ html[lang="fa"] .drawer__head h2{font-size:28px;font-weight:500}
     .to('.nav',{yPercent:0,duration:1},2.4)
     .to('.hero .ln > span',{yPercent:0,duration:1.4,stagger:.12},2.5)
     .to('.hero .kick,.hero__sub,.hero .cta',{opacity:1,y:0,duration:1,stagger:.1},2.8)
-    .to('.hero__inset',{opacity:1,y:0,duration:1.2},3.0)
     .set(intro,{display:'none'});
   setTimeout(function(){ if(tl.progress()<1) tl.progress(1); },7000);
 
   /* hero: image drifts slower than the page, text lifts away */
   gsap.to('.hero__media img',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   gsap.to('.hero__text',{y:-80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('.hero__inset',{y:-150,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
   /* ================= statement: rule draws, words rise ================= */
   gsap.from('.stmt__rule hr',{scaleX:0,duration:1.6,ease:'expo.inOut',scrollTrigger:{trigger:'.stmt',start:'top 80%'}});
